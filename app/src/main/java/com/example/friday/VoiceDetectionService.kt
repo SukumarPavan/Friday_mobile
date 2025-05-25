@@ -94,14 +94,19 @@ class VoiceDetectionService : Service() {
                 try {
                     val callback = PorcupineManagerCallback { keywordIndex ->
                         LogUtils.d(TAG, "Wake word detected with index: $keywordIndex")
-                        sendBroadcast(Intent("WAKE_WORD_DETECTED"))
+                        if (!isRunning.get()) return@PorcupineManagerCallback
+                        isRunning.set(false) // Prevent multiple launches
+                        val intent = Intent(applicationContext, FridayTasksActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                        porcupineManager?.stop() // Stop listening for wake word
                     }
                     
                     // Use higher sensitivity to improve detection reliability
                     porcupineManager = PorcupineManager.Builder()
                         .setAccessKey("GfwPR/YcCPs+C0/i7RShNBjqAqCkbCrj+phHkAYlOUr6vaXJYDovbA==")
                         .setKeywordPaths(arrayOf(modelPath))
-                        .setSensitivities(floatArrayOf(0.8f)) // Higher sensitivity (0.0-1.0)
+                        .setSensitivities(floatArrayOf(1.0f)) // Increased sensitivity for better long-range detection
                         .build(applicationContext, callback)
                     
                     LogUtils.d(TAG, "PorcupineManager initialized successfully")

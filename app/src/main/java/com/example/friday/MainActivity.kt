@@ -51,6 +51,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
+import com.example.friday.FridayTasksActivity
 
 class MainActivity : ComponentActivity() {
     private val TAG = "MainActivity"
@@ -167,6 +168,23 @@ class MainActivity : ComponentActivity() {
                         runOnUiThread {
                             detectionState.value = "Detected!"
                             lastDetectionTime.value = System.currentTimeMillis()
+                            
+                            // Send webhook to n8n
+                            CoroutineScope(Dispatchers.IO).launch {
+                                WebhookUtil.sendWebhook(mapOf(
+                                    "event" to "wake_word_detected",
+                                    "keyword_index" to keywordIndex,
+                                    "device_info" to mapOf(
+                                        "model" to android.os.Build.MODEL,
+                                        "manufacturer" to android.os.Build.MANUFACTURER,
+                                        "android_version" to android.os.Build.VERSION.RELEASE
+                                    )
+                                ))
+                            }
+                            
+                            // Navigate to FridayTasksActivity
+                            val intent = Intent(this@MainActivity, FridayTasksActivity::class.java)
+                            startActivity(intent)
                             
                             // Reset status after 3 seconds
                             CoroutineScope(Dispatchers.Main).launch {
@@ -305,4 +323,4 @@ fun StatusIndicator(status: String) {
             )
         }
     }
-} 
+}

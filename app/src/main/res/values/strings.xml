@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Friday</string>
+    <string name="accessibility_service_description">Friday Assistant Accessibility Service</string>
 </resources>

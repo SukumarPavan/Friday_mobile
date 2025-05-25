@@ -64,6 +64,12 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.porcupine)
     
+    // Material Components for Android Views
+    implementation("com.google.android.material:material:1.12.0")
+    
+    // ConstraintLayout
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     

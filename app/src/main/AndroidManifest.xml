@@ -3,9 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.friday">
 
-    <!-- Add required permissions -->
+    <!-- Permissions required for Friday's tasks -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" /> <!-- For saving notes, consider Scoped Storage for modern Android -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Needed for the VoiceDetectionService -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Needed for PowerManager.PARTIAL_WAKE_LOCK -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -29,6 +37,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.example.friday.FridayTasksActivity"
+            android:exported="false"
+            android:label="Friday Tasks"
+            android:theme="@style/Theme.Friday" />
+
         <service
             android:name="com.example.friday.VoiceDetectionService"
             android:enabled="true"
@@ -42,6 +56,24 @@
                 <action android:name="WAKE_WORD_DETECTED" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".FridayAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/friday_accessibility_service" />
+        </service>
+
+        <service
+            android:name=".FridayOverlayService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
     </application>
 
 </manifest>
