@@ -56,8 +56,8 @@ Grant these permissions when prompted.
 
 - Tap the microphone or use the voice trigger to start.
 - Speak commands like:
-  - "Call John Doe"
-  - "Send message to Alice Hello!"
+  - "Call Me"
+  - "Send message to You!"
   - "Set alarm for 7:00 AM"
   - "Open WhatsApp"
   - "Note Buy groceries"
