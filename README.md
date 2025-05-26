@@ -57,7 +57,7 @@ Grant these permissions when prompted.
 - Tap the microphone or use the voice trigger to start.
 - Speak commands like:
   - "Call Me"
-  - "Send message to you"
+  - "Send message to You!"
   - "Set alarm for 7:00 AM"
   - "Open WhatsApp"
   - "Note Buy groceries"
@@ -87,4 +87,10 @@ This project is licensed under the MIT License.
 
 ---
 
-**Developed by Sukumar Pavan** 
+**Developed by Sukumar Pavan**
+
+---
+
+## GitHub Star Graph
+
+[![Stargazers over time](https://starchart.cc/SukumarPavan/Friday_mobile.svg)](https://starchart.cc/SukumarPavan/Friday_mobile)
