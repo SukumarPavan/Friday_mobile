@@ -405,7 +405,7 @@ class FridayTasksActivity : AppCompatActivity() {
                                     "No response from server",
                                     Toast.LENGTH_SHORT).show()
                             }
-                        } catch (e: Exception) {
+        } catch (e: Exception) {
                             Log.e("FridayTasksActivity", "Error sending speech input: ${e.message}", e)
                             Toast.makeText(this@FridayTasksActivity,
                                 "Error sending speech input",
