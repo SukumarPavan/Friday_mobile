@@ -15,7 +15,7 @@ Friday Mobile is an Android virtual assistant app that helps you perform daily t
 
 ## Screenshots
 
-*(Add screenshots of your app here)*
+🚧🚧🚧
 
 ## Getting Started
 
@@ -56,8 +56,8 @@ Grant these permissions when prompted.
 
 - Tap the microphone or use the voice trigger to start.
 - Speak commands like:
-  - "Call John Doe"
-  - "Send message to Alice Hello!"
+  - "Call Me"
+  - "Send message to you"
   - "Set alarm for 7:00 AM"
   - "Open WhatsApp"
   - "Note Buy groceries"
@@ -66,6 +66,16 @@ Grant these permissions when prompted.
 
 - Webhook integration can be customized in `WebhookUtil`.
 - Add or modify supported commands in `FridayTasksActivity.kt`.
+
+## Configuration: Webhook URL
+
+To use your own n8n webhook, set the URL in your `local.properties` file (do not commit this file):
+
+```
+N8N_WEBHOOK_URL=https://your-n8n-instance.com/webhook/your-webhook-id
+```
+
+**Warning:** Never commit your real webhook URL or secrets to a public repository.
 
 ## Contributing
 

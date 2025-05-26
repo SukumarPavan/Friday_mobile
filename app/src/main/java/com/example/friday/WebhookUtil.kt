@@ -13,8 +13,8 @@ import java.io.OutputStreamWriter
 object WebhookUtil {
     private const val TAG = "WebhookUtil"
     
-    // Replace this with your n8n webhook URL
-    private const val N8N_WEBHOOK_URL = "https://mako-generous-frequently.ngrok-free.app/webhook/f9dff7fd-ce94-4e72-b57b-628729a13715"
+    // Load the webhook URL from BuildConfig (set via local.properties and build.gradle)
+    private val N8N_WEBHOOK_URL: String = BuildConfig.N8N_WEBHOOK_URL
     
     suspend fun sendWebhook(data: Map<String, Any> = mapOf("event" to "wake_word_detected")) {
         try {

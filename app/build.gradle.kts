@@ -19,6 +19,14 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val localProperties = java.util.Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use { localProperties.load(it) }
+        }
+        val n8nWebhookUrl = localProperties["N8N_WEBHOOK_URL"] as? String ?: ""
+        buildConfigField("String", "N8N_WEBHOOK_URL", '"' + n8nWebhookUrl + '"')
     }
 
     buildTypes {
