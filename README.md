@@ -15,7 +15,7 @@ Friday Mobile is an Android virtual assistant app that helps you perform daily t
 
 ## Screenshots
 
-*(Add screenshots of your app here)*
+🚧🚧🚧
 
 ## Getting Started
 
